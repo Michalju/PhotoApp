@@ -15,7 +15,7 @@ CREATE TABLE countries (
 CREATE TABLE locations (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    descirption TEXT,
+    description TEXT,
     visited BOOLEAN,
     country_id INT REFERENCES countries(id) ON DELETE CASCADE
 );

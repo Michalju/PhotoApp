@@ -2,13 +2,18 @@ import pdb
 
 from models.continent import Continent
 from models.country import Country
+from models.location import Location
 
 import repositories.continent_repository as continent_repository
 import repositories.country_repository as country_repository
+import repositories.location_repository as location_repository
 
+# clear tables
+location_repository.delete_all()
 country_repository.delete_all()
 continent_repository.delete_all()
 
+# populates continent table
 africa = Continent("Africa")
 continent_repository.save(africa)
 
@@ -30,6 +35,7 @@ continent_repository.save(antarctica)
 australia = Continent("Australia")
 continent_repository.save(australia)
 
+# populates contry table
 scotland = Country("Scotland", europe)
 country_repository.save(scotland)
 
@@ -38,5 +44,12 @@ country_repository.save(singapore)
 
 iceland = Country("Iceland", europe)
 country_repository.save(iceland)
+
+# populates continent table
+glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, scotland)
+godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, iceland)
+
+location_repository.save(glencoe)
+location_repository.save(godafoss)
 
 pdb.set_trace()
