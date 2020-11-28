@@ -45,15 +45,33 @@ country_repository.save(singapore)
 iceland = Country("Iceland", europe)
 country_repository.save(iceland)
 
+austria = Country("Austria", europe)
+country_repository.save(austria)
+
+namibia = Country("Namibia", africa)
+country_repository.save(namibia)
+
 # populates continent table
 glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, scotland)
 glenfinnan = Location("Glenfinnan", "Awsome Harry Potter bridge", True, scotland)
 godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, iceland)
 bluelagoon = Location("Blue Lagoon", "Amazing thermal pools", False, iceland)
+clar_quay = Location("Clark Quay", "Good to stay", True, singapore)
+sentosa = Location("Sentosa", "Some entertainment there", True, singapore)
+marin_sands_bay = Location("Marina Sands Bay", "Nice night photography", True, singapore)
+alps = Location("Alps", "Excellent glacier photo oportunity", False, austria) 
+namibia_dunes = Location("Namibia Dunes", "Excellent dunes photo oportunity", False, namibia) 
 
 location_repository.save(glencoe)
 location_repository.save(glenfinnan)
 location_repository.save(godafoss)
 location_repository.save(bluelagoon)
+
+location_repository.save(clar_quay)
+location_repository.save(sentosa)
+location_repository.save(marin_sands_bay)
+location_repository.save(alps)
+location_repository.save(namibia_dunes)
+
 
 pdb.set_trace()
