@@ -47,9 +47,13 @@ country_repository.save(iceland)
 
 # populates continent table
 glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, scotland)
+glenfinnan = Location("Glenfinnan", "Awsome Harry Potter bridge", True, scotland)
 godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, iceland)
+bluelagoon = Location("Blue Lagoon", "Amazing thermal pools", False, iceland)
 
 location_repository.save(glencoe)
+location_repository.save(glenfinnan)
 location_repository.save(godafoss)
+location_repository.save(bluelagoon)
 
 pdb.set_trace()

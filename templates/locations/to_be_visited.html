@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>To be visisted locations</h1>
+
+
+{% for location in locations  %}
+
+<p>Location name: {{location.name}}<br>Description: {{location.description}} <br>Country: {{location.country.name}} <br> Continent: {{location.country.continent.name}} </p>
+
+{% endfor %}
+
+{% endblock %}

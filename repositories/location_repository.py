@@ -69,3 +69,18 @@ def update(location):
     values = [location.name, location.description, location.visited, location.country.id, location.id]
     # execute sql query
     run_sql(sql, values)
+
+# create select all visited locations function     
+def visited():
+     # set return variable as empty list
+    locations = []
+    # create sql query without values
+    sql = "SELECT * FROM locations WHERE visited = True"
+    # execute sql query
+    results = run_sql(sql)
+    # convert return which is a single element list of dictionaries into list of locations objects
+    for result in results:        
+        location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
+        locations.append(location)
+    # return the result 
+    return locations
