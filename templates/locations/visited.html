@@ -3,11 +3,16 @@
 {% block content %}
 <h1>Visited locations</h1>
 
-
-{% for location in locations  %}
-
-<p>Location name: {{location.name}}<br>Description: {{location.description}} <br>Country: {{location.country.name}} <br> Continent: {{location.country.continent.name}} </p>
-
-{% endfor %}
-
+<div class="grid-container">
+    {% for location in locations  %}
+    <div class="card">
+        <img class="card_image" src='{{url_for("static", filename="images/location.png")}}'>
+        <div class="container">
+            <h4><b>{{location.name}}</b></h4>
+            <p>{{location.country.name}} </p>
+            <p>({{location.country.continent.name}})</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

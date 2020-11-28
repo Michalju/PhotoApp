@@ -1,0 +1,42 @@
+/* This is grid part CSS */
+.grid-container {
+  display: grid;
+  grid-template-columns: 400px 400px 400px;
+  grid-gap: 50px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  text-align: center;
+  font-size: 30px;
+  background-color:  #333;
+}
+
+/* This is card CSS */
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.81);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  color: white;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.824);
+}
+
+.container {
+  padding: 2px 16px;
+} 
+.container p, h4, b {
+  margin: 2px ;
+} 
+
+.card_image {
+  background-color: #333;
+  border-radius: 5px 5px 0 0;
+  width: 350px
+}
