@@ -84,3 +84,18 @@ def visited():
         locations.append(location)
     # return the result 
     return locations
+
+# create select all to be_visited locations function     
+def to_be_visited():
+     # set return variable as empty list
+    locations = []
+    # create sql query without values
+    sql = "SELECT * FROM locations WHERE visited = False"
+    # execute sql query
+    results = run_sql(sql)
+    # convert return which is a single element list of dictionaries into list of locations objects
+    for result in results:        
+        location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
+        locations.append(location)
+    # return the result 
+    return locations

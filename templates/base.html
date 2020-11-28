@@ -6,32 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation_bar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <title>Photo Locations App</title>
 </head>
 
 <body>
     <header id="top_menu">
         <ul>
-            <li><a href="#home">Photo Locations</a></li>
+            <li><a href="/">Photo Locations</a></li>
             <li class="dropdown">
-                <a href="#" class="dropbtn">View</a>
+                <a href="" class="dropbtn">View</a>
                 <div class="dropdown-content">
-                    <a href="locations/visited">Visited</a>
-                    <a href="locations/to_be_visited">To be visited</a>
+                    <a href="/locations/visited">Visited</a>
+                    <a href="/locations/to_be_visited">To be visited</a>
                 </div>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropbtn">Add</a>
+                <a href="" class="dropbtn">Add</a>
                 <div class="dropdown-content">
-                    <a href="countries/add">Country</a>
-                    <a href="locations/add">Location</a>
+                    <a href="/countries/add">Country</a>
+                    <a href="/locations/add">Location</a>
                 </div>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropbtn">Edit</a>
+                <a href="" class="dropbtn">Edit</a>
                 <div class="dropdown-content">
-                    <a href="countries/edit">Country</a>
-                    <a href="locations/edit">Location</a>
+                    <a href="/countries/edit">Country</a>
+                    <a href="/locations/edit">Location</a>
                 </div>
             </li>
         </ul>
@@ -43,7 +44,7 @@
     {% endblock %}
 
     <footer>
-        <p>footer</p>
+        <p>Copyrights &#169 Aberdeenshire UK 2020. All Rights Reserved</p>
     </footer>
 </body>
 
