@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation_bar.css') }}">
     <title>Photo Locations App</title>
 </head>
-<body>
-    <header>
-        <h1>Photo Locations</h1>
-        <nav>
-            <ul >
-                <li><a href="/">Home</a></li>    
 
-              </ul>
-        </nav>
+<body>
+    <header id="top_menu">
+        <ul>
+            <li><a href="#home">Photo Locations</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">View</a>
+                <div class="dropdown-content">
+                    <a href="location/visited">Visited</a>
+                    <a href="location/to_be_visited">To be visited</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Add</a>
+                <div class="dropdown-content">
+                    <a href="country/add">Country</a>
+                    <a href="location/add">Location</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Edit</a>
+                <div class="dropdown-content">
+                    <a href="country/edit">Country</a>
+                    <a href="location/edit">Location</a>
+                </div>
+            </li>
+        </ul>
+
     </header>
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
+
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <p>footer</p>
+    </footer>
 </body>
+
 </html>
