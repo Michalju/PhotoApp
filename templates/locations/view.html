@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Visited</th>      
+        <th>Country</th>  
+        <th>Action</th>
+    </tr>
+    {% for location in locations %}    
+    <tr>
+        <td>{{location.name}}</td>
+        <td>{{location.description}}</td>
+        <td>{{location.visited}}</td>
+        <td>{{location.country.name}}</td>
+        <td>
+            <form action="/locations" method="POST">
+                <input type="hidden" name="location_id" value="{{location.id}}">
+                <button type="submit" formaction="/locations/edit">Edit</button>
+                <button type="submit" formaction="/locations/delete">Delete</button>
+            </form>
+        </td>
+    </tr> 
+    {% endfor %}
+</table>
+
+{% endblock %}

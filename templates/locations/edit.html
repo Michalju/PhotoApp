@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Visited</th>      
+            <th>Country</th>  
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="location_name" value="{{location.name}}" placeholder="{{location.name}}" required>
+            </td>
+            <td>
+                <input type="text" name="location_description" value="{{location.description}}" placeholder="{{location.description}}" required>
+            </td>
+            <td>
+                <select name="location_visited">
+                    <option value="False" {% if location.visited == False %} selected="selected"{% endif %}> 
+                        No
+                    </option>
+                    <option value="True"  {% if location.visited == True %} selected="selected"{% endif %}> 
+                        Yes
+                    </option>
+                </select>
+            </td>
+            <td>
+                <select id="country" name="country_id">
+                {% for country in countries %}
+                    <option value="{{ country.id }}"
+                    {% if location.country.id == country.id %} selected="selected"{% endif %}>                        
+                        {{ country.name }}</option>
+                {% endfor %}
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="location_id" value="{{location.id}}">
+    <button type="submit" formaction="/locations/update">Update</button>
+    <button type="submit" formaction="/locations/delete">Delete</button>
+</form>
+
+
+{% endblock %}

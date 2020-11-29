@@ -11,14 +11,11 @@
     <tr>
         <td>{{country.name}}</td>
         <td>{{country.continent.name}}</td>
-        <td id="td_action">
-            <form action="/countries/edit" method="post">
+        <td>
+            <form action="" method="POST">
                 <input type="hidden" name="country_id" value="{{country.id}}">
-                <button type="submit">Edit</button>
-            </form>
-            <form action="/countries/delete" method="post">
-                <input type="hidden" name="country_id" value="{{country.id}}">
-                <button type="submit">Delete</button>
+                <button type="submit" formaction="/countries/edit">Edit</button>
+                <button type="submit" formaction="/countries/delete">Delete</button>
             </form>
         </td>
     </tr> 
