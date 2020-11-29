@@ -2,22 +2,28 @@
 
 {% block content %}
 <form action="/countries/add" method="POST">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Name" required autofocus>
-    </div>
+    <table class="styled-table">
 
-    <label for="continent">Continent:</label>
-
-    <select id="continent" name="continent_id">
-        {% for continent in continents %}
-            <option value="{{ continent.id }}">{{ continent.name }}</option>
-        {% endfor %}
-    </select>
-
-    <button type="submit">Add Country</button>
-
+        <tr>
+            <th>Name</th>
+            <th>Continent</th>
+            <th>Action</th>            
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="name" placeholder="Name" required autofocus>
+            </td>
+            <td>
+                <select id="continent" name="continent_id">
+                    {% for continent in continents %}
+                        <option value="{{ continent.id }}">{{ continent.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <button type="submit">Add Country</button>
+            </td>
+        </tr>
+    </table>
 </form>
-
-
 {% endblock %}
