@@ -11,9 +11,8 @@ def countries_new():
     continents = continent_repository.select_all()
     return render_template("countries/add.html", continents=continents, title="Add a country")
 
-@countries_blueprint.route("/countries/add", method=['POST'])
+@countries_blueprint.route("/countries/add", methods=['POST'])
 def countries_add():
     new_country = Country(request.form['name'], continent_repository.select(request.form['continent_id']))
     country_repository.save(new_country)
-
     return redirect('/')
