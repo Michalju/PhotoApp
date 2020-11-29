@@ -22,7 +22,7 @@ def select_all():
      # set return variable as empty list
     locations = []
     # create sql query without values
-    sql = "SELECT * FROM locations"
+    sql = "SELECT * FROM locations ORDER BY name ASC"
     # execute sql query
     results = run_sql(sql)
     # convert return which is a single element list of dictionaries into list of locations objects

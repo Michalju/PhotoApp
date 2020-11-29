@@ -22,7 +22,7 @@ def select_all():
      # set return variable as empty list
     countries = []
     # create sql query without values
-    sql = "SELECT * FROM countries"
+    sql = "SELECT * FROM countries ORDER BY	name ASC"
     # execute sql query
     results = run_sql(sql)
     # convert return which is a single element list of dictionaries into list of countries objects
@@ -61,10 +61,7 @@ def delete(id):
     # execute sql query
     run_sql(sql, values)
     
-# create update function
-    
-    
-    
+# create update function    
 def update(country):
     # create sql query without values
     sql = "UPDATE countries SET (name, continent_id) = (%s, %s) WHERE id = %s"
