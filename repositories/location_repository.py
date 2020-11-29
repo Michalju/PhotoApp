@@ -114,3 +114,22 @@ def to_be_visited():
         locations.append(location)
     # return the result 
     return locations
+
+def search(name):
+    locations = []
+    # create sql query without values
+    sql = """SELECT locations.* FROM locations
+            INNER JOIN countries ON locations.country_id = countries.id
+            INNER JOIN continents ON countries.continent_id = continents.id
+            WHERE continents.name = %s OR countries.name = %s OR locations.name = %s"""
+    # create list with values required by sql query
+    values = [name, name, name]
+    # execute sql query
+    results = run_sql(sql, values)
+    for result in results:        
+        location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
+        locations.append(location)
+    # convert return which is a single element list of dictionaries into a continent object
+    #location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"])
+    # return the result 
+    return locations

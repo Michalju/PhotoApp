@@ -39,7 +39,6 @@ def locations_delete():
     location_repository.delete(request.form['location_id'])
     return redirect('/locations/view')
 
-
 @locations_blueprint.route("/locations/edit", methods=['POST'])
 def locations_edit():
     location=location_repository.select(request.form['location_id'])
