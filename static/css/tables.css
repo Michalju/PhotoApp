@@ -26,7 +26,7 @@
   background-color: #f5ddb4;
 }
 
-#td_action{
+.td_action{
   display: flex;
   flex-direction: column;
   align-items: center;

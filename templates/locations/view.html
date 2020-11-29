@@ -15,7 +15,7 @@
         <td>{{location.description}}</td>
         <td>{{location.visited}}</td>
         <td>{{location.country.name}}</td>
-        <td id="td_action">
+        <td class="td_action">
             <form action="/locations" method="POST">
                 <input type="hidden" name="location_id" value="{{location.id}}">
                 <button type="submit" formaction="/locations/edit">Edit</button>

@@ -2,28 +2,39 @@
 
 {% block content %}
 <form action="/locations/add" method="POST">
-    <label for="country">Country:</label>
-    <select id="country" name="country_id">
-        {% for country in countries %}
-            <option value="{{ country.id }}">{{ country.name }}</option>
-        {% endfor %}
-    </select>
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Name" required autofocus>
-    </div>
-    <div>
-        <label for="visited">Visited:</label>
-        <select id="visited" name="visited">
-            <option value="False">No</option>
-            <option value="True">Yes</option>
-        </select>
-    </div><br>
-    <div>
-        <label for="description">Description:</label>
-        <textarea rows="4" cols="50" id="description" name="description" required></textarea>
-    </div>
-    <button type="submit">Add Location</button>
+    <table class="styled-table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Visited</th>
+            <th>Country</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>
+                <select id="country" name="country_id">
+                    {% for country in countries %}
+                        <option value="{{ country.id }}">{{ country.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <input type="text" id="name" name="name" placeholder="Name" required autofocus>
+            </td>
+            <td>
+                <select id="visited" name="visited">
+                    <option value="False">No</option>
+                    <option value="True">Yes</option>
+                </select>
+            </td>
+            <td>
+                <textarea rows="4" cols="50" id="description" name="description" required></textarea>
+            </td>
+            <td>
+                <button type="submit">Add Location</button>
+            </td>
+        </tr>
+    </table>
 </form>
 
 

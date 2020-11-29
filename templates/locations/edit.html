@@ -2,7 +2,7 @@
 
 {% block content %}
 <form method="post">
-    <table>
+    <table class="styled-table">
         <tr>
             <th>Name</th>
             <th>Description</th>
@@ -36,11 +36,14 @@
                 {% endfor %}
                 </select>
             </td>
+            <td class="td_action"> 
+                <input type="hidden" name="location_id" value="{{location.id}}">
+                <button type="submit" formaction="/locations/update">Update</button>
+                <button type="submit" formaction="/locations/delete">Delete</button>
+            </td>
         </tr>
     </table>
-    <input type="hidden" name="location_id" value="{{location.id}}">
-    <button type="submit" formaction="/locations/update">Update</button>
-    <button type="submit" formaction="/locations/delete">Delete</button>
+
 </form>
 
 

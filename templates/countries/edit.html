@@ -2,10 +2,11 @@
 
 {% block content %}
 <form method="post">
-    <table>
+    <table class="styled-table">
         <tr>
             <th>Name</th>
             <th>Continent</th>
+            <th>Action</th>
         </tr>
         <tr>
             <td>
@@ -20,11 +21,14 @@
                 {% endfor %}
                 </select>
             </td>
+            <td class="td_action">
+                <input type="hidden" name="country_id" value="{{country.id}}">
+                <button type="submit" formaction="/countries/update">Update</button>
+                <button type="submit" formaction="/countries/delete">Delete</button>
+            </td>
         </tr>
     </table>
-    <input type="hidden" name="country_id" value="{{country.id}}">
-    <button type="submit" formaction="/countries/update">Update</button>
-    <button type="submit" formaction="/countries/delete">Delete</button>
+
 </form>
 
 
