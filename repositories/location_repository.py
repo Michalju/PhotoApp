@@ -32,6 +32,21 @@ def select_all():
     # return the result 
     return locations
 
+ # create select 6 random    
+def select_six_random():
+     # set return variable as empty list
+    locations = []
+    # create sql query without values
+    sql = "SELECT * FROM locations ORDER BY random() LIMIT 6"
+    # execute sql query
+    results = run_sql(sql)
+    # convert return which is a single element list of dictionaries into list of locations objects
+    for result in results:        
+        location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
+        locations.append(location)
+    # return the result 
+    return locations   
+
 # create select by id function    
 def select(id):
     # create sql query without values
