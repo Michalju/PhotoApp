@@ -1,3 +1,15 @@
 body{
   background-color: #fcf0e2;
 }
+
+#title{
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-top: 0px;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
