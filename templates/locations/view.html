@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<table>
+<table class="styled-table">
     <tr>
         <th>Name</th>
         <th>Description</th>
@@ -15,7 +15,7 @@
         <td>{{location.description}}</td>
         <td>{{location.visited}}</td>
         <td>{{location.country.name}}</td>
-        <td>
+        <td id="td_action">
             <form action="/locations" method="POST">
                 <input type="hidden" name="location_id" value="{{location.id}}">
                 <button type="submit" formaction="/locations/edit">Edit</button>
