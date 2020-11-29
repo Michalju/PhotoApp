@@ -26,7 +26,7 @@ def locations_new():
 def locations_add():
     new_location = Location(request.form['name'], request.form['description'], request.form['visited'], country_repository.select(request.form['country_id']))
     location_repository.save(new_location)
-    return redirect('/')
+    return redirect('/locations/view')
 
 
 @locations_blueprint.route("/locations/view")
