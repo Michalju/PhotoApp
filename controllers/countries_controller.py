@@ -15,4 +15,29 @@ def countries_new():
 def countries_add():
     new_country = Country(request.form['name'], continent_repository.select(request.form['continent_id']))
     country_repository.save(new_country)
-    return redirect('/')
+    return redirect('/countries/view')
+
+@countries_blueprint.route("/countries/view")
+def countries_view():
+    countries = country_repository.select_all()
+    return render_template("countries/view.html", countries=countries, title="List of countries")
+
+@countries_blueprint.route("/countries/delete", methods=['POST'])
+def countries_delete():
+    country_repository.delete(request.form['country_id'])
+    return redirect('/countries/view')
+
+
+@countries_blueprint.route("/countries/edit", methods=['POST'])
+def countries_edit():
+    country=country_repository.select(request.form['country_id'])
+    continents = continent_repository.select_all()
+    return render_template("countries/edit.html", country = country, continents = continents, title="Edit/Delete")
+
+@countries_blueprint.route("/countries/update", methods=['POST'])
+def countries_update():
+    continent = continent_repository.select(request.form['continent_id'])
+    updated_country = Country(request.form['country_name'], continent ,request.form['country_id'])
+    country_repository.update(updated_country)
+
+    return redirect('/countries/view')

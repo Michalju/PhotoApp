@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Continent</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="country_name" value="{{country.name}}" placeholder="{{country.name}}" required>
+            </td>
+            <td>
+                <select id="continent" name="continent_id">
+                {% for continent in continents %}
+                    <option value="{{ continent.id }}"
+                    {% if country.continent.id == continent.id %} selected="selected"{% endif %}>                        
+                        {{ continent.name }}</option>
+                {% endfor %}
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="country_id" value="{{country.id}}">
+    <button type="submit" formaction="/countries/update">Edit</button>
+    <button type="submit" formaction="/countries/delete">Delete</button>
+</form>
+
+
+{% endblock %}

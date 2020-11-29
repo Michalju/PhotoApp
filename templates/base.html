@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation_bar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/locations_grid.css') }}">
-
     <title>Photo Locations App</title>
 </head>
 
@@ -32,16 +31,15 @@
                 </div>
             </li>
             <li class="dropdown">
-                <a href="" class="dropbtn">Edit</a>
+                <a href="" class="dropbtn">View</a>
                 <div class="dropdown-content">
-                    <a href="/countries/edit">Country</a>
-                    <a href="/locations/edit">Location</a>
+                    <a href="/countries/view">Countries</a>
+                    <a href="/locations/view">Locations</a>
                 </div>
             </li>
         </ul>
 
     </header>
-
     <section>
         <p id="title">{{title}}</p>
         {% block content %}
