@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS countries;
 DROP TABLE IF EXISTS continents;
@@ -18,4 +19,12 @@ CREATE TABLE locations (
     description TEXT,
     visited BOOLEAN,
     country_id INT REFERENCES countries(id) ON DELETE CASCADE
+);
+
+CREATE TABLE photos(
+    id SERIAL PRIMARY KEY,
+    filename VARCHAR(255),
+    path VARCHAR(255),
+    mine BOOLEAN,
+    location_id INT REFERENCES locations(id) ON DELETE CASCADE
 );
