@@ -23,8 +23,7 @@ CREATE TABLE locations (
 
 CREATE TABLE photos(
     id SERIAL PRIMARY KEY,
-    filename VARCHAR(255),
-    path VARCHAR(255),
+    image BYTEA,
     mine BOOLEAN,
     location_id INT REFERENCES locations(id) ON DELETE CASCADE
 );

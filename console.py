@@ -1,12 +1,17 @@
 import pdb
 
+import sys
+
+
 from models.continent import Continent
 from models.country import Country
 from models.location import Location
+from models.photo import Photo
 
 import repositories.continent_repository as continent_repository
 import repositories.country_repository as country_repository
 import repositories.location_repository as location_repository
+import repositories.photo_repository as photo_repository
 
 # clear tables
 location_repository.delete_all()
@@ -56,22 +61,31 @@ glencoe = Location("Glencoe", "This is stunning location, i need to see it", Fal
 glenfinnan = Location("Glenfinnan", "Awsome Harry Potter bridge", True, scotland)
 godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, iceland)
 bluelagoon = Location("Blue Lagoon", "Amazing thermal pools", False, iceland)
-clar_quay = Location("Clark Quay", "Good to stay", True, singapore)
+clark_quay = Location("Clark Quay", "Good to stay", True, singapore)
 sentosa = Location("Sentosa", "Some entertainment there", True, singapore)
-marin_sands_bay = Location("Marina Sands Bay", "Nice night photography", True, singapore)
+marina_sands_bay = Location("Marina Sands Bay", "Nice night photography", True, singapore)
 alps = Location("Alps", "Excellent glacier photo oportunity", False, austria) 
 namibia_dunes = Location("Namibia Dunes", "Excellent dunes photo oportunity", False, namibia) 
+devils_pulpit = Location("Devils Pulpit", "Awesome colours", True, scotland)
 
 location_repository.save(glencoe)
 location_repository.save(glenfinnan)
 location_repository.save(godafoss)
 location_repository.save(bluelagoon)
 
-location_repository.save(clar_quay)
+location_repository.save(clark_quay)
 location_repository.save(sentosa)
-location_repository.save(marin_sands_bay)
+location_repository.save(marina_sands_bay)
 location_repository.save(alps)
 location_repository.save(namibia_dunes)
+location_repository.save(devils_pulpit)
 
+photo_devils_pulpit_01 = Photo("photos/devils_pulpit.jpg", True, devils_pulpit)
+marina_sands_bay_01 = Photo("photos/marina_sands01.jpg", True, marina_sands_bay)
+# photo_repository.save(photo_devils_pulpit_01)
+# photo_repository.save(photo_devils_pulpit_02)
+# photo_repository.save(photo_devils_pulpit_03)
+
+#photo_repository.save(marina_sands_bay_01)
 
 pdb.set_trace()

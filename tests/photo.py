@@ -5,7 +5,7 @@ from models.location import Location
 from models.photo import Photo
 
 class TestPhoto(unittest.TestCase):
-    
+        
     # This is to setup countries for test
     def setUp(self):
         self.europe = Continent("Europe", 2)
@@ -14,21 +14,28 @@ class TestPhoto(unittest.TestCase):
 
         self.glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, self.scotland, 1)
         self.godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, self.iceland, 2)
-        
-        self.glencoe_photo= Photo("glen_01.png", "/photos/", True, self.glencoe, 1)
-        self.godafoss_photo_01= Photo("god_01.png", "/photos/", False, self.godafoss, 2)
-        self.godafoss_photo_02= Photo("god_02.png", "/photos/", False, self.godafoss)
+
+        self.glencoe_photo = Photo("photos/devils_pulpit.jpg", True, self.glencoe, 1)
+        self.godafoss_photo_01 = Photo("photos/marina_sands01.jpg", True, self.godafoss, 2)
+        self.godafoss_photo_02 = Photo("photos/marina_sands01.jpg", True, self.godafoss)        
+
 
     # Verifies photo filename has been setup correctly
     def test_photo_filename(self):
-        self.assertEqual(self.glencoe_photo.filename, "glen_01.png")
-        self.assertEqual(self.godafoss_photo_01.filename, "god_01.png")
+        fin = None
+        fin = open("photos/devils_pulpit.jpg", "rb")
+        img1 = fin.read()
+        fin = open("photos/marina_sands01.jpg", "rb")
+        img2 = fin.read()       
+        if fin:
+            fin.close()
 
-        
-    # Verifies photo filepath has been setup correctly
-    def test_photo_path(self):
-        self.assertEqual(self.glencoe_photo.path, "/photos/")
-        self.assertEqual(self.godafoss_photo_01.path, "/photos/")
+
+        self.assertEqual(self.glencoe_photo.image,img1)
+
+        self.assertEqual(self.godafoss_photo_01.image, img2)
+
+
 
     # Verifies photo mine has been setup correctly
     def test_photo_mine(self):

@@ -14,7 +14,7 @@
             </td>
             <td>
                 <select id="continent" name="continent_id">
-                {% for continent in continents %}
+                {% for continent in continents %} 
                     <option value="{{ continent.id }}"
                     {% if country.continent.id == continent.id %} selected="selected"{% endif %}>                        
                         {{ continent.name }}</option>
