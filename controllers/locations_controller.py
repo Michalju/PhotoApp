@@ -52,3 +52,11 @@ def locations_update():
     updated_location = Location(request.form['location_name'], request.form['location_description'], request.form['location_visited'], country ,request.form['location_id'])
     location_repository.update(updated_location)
     return redirect('/locations/view')
+
+
+@locations_blueprint.route("/locations/view_single", methods=['POST'])
+def locations_view_single():
+    pass
+    location=location_repository.select(request.form['location_id'])
+    photos = photo_repository.select_all_for_location(request.form['location_id'])
+    return render_template("locations/view_single.html", location=location, photos=photos,  title=location.name)

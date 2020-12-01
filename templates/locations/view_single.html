@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="grid-container-sinlge-location">
+    {% for photo in photos %}
+        <img class="card_image-sinlge-location" src='{{url_for("static", filename="photos/"+photo.filename)}}'>
+    {% endfor %}
+</div>
+
+<table class="styled-table">
+    <tr>
+        <th>Location name</th>
+        <td>{{location.name}}</td>
+    </tr>
+    <tr>
+        <th>Country<br>(Continent)</th>
+        <td>{{location.country.name}} <br>({{location.country.continent.name}})</td>
+    </tr>
+    <tr>
+        <th>Brief</th>
+        <td>{{location.description}}</td>
+    </tr>
+    <tr>
+        <th>Visited</th>
+        <td>{% if location.visited %}
+            ✅
+        {% else %}
+            ❌
+        {% endif %}        
+        </td>
+    </tr>
+</table>
+
+
+{% endblock %}

@@ -85,3 +85,19 @@ def locations_photo(locations):
         else:
             locations_with_photo.append(location)
     return locations_with_photo
+# Get all photos for a location
+def select_all_for_location(id):
+     # set return variable as empty list
+    photos = []
+    # create sql query without values
+    sql = "SELECT * FROM photos WHERE location_id = %s"
+    values = [id]
+    # execute sql query
+    results = run_sql(sql, values)
+    # convert return which is a single element list of dictionaries into list of countries objects
+    if results :
+        for result in results:        
+            photo = Photo(result["filename"], result["mine"], location_repository.select(result['location_id']),result["id"]) 
+            photos.append(photo)
+    # return the result 
+    return photos

@@ -17,7 +17,8 @@
 
 ### Other features  ###
 * Home page displays 6 random locaitons
-* locations tiles shows random photo associated with the locaiton
+* Locations tiles shows random photo associated with the locaiton
+* Sinlge location detailed page accessible from locaitons list
 
 ## Required packages: ## 
 * PostgreSQL version 13.0
