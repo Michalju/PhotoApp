@@ -3,18 +3,19 @@ from flask import Blueprint
 from models.location import Location
 import repositories.location_repository as location_repository
 import repositories.country_repository as country_repository
+import repositories.photo_repository as photo_repository
 
 locations_blueprint = Blueprint("locations", __name__)
 
 @locations_blueprint.route("/locations/visited")
 def locations_visited():
-    locations = location_repository.visited()
+    locations = photo_repository.locations_photo(location_repository.visited())
     return render_template("locations/index.html", locations = locations, title="Visited locations")
 
 
 @locations_blueprint.route("/locations/to_be_visited")
 def locations_to_be_visited():
-    locations = location_repository.to_be_visited()
+    locations = photo_repository.locations_photo(location_repository.to_be_visited())
     return render_template("locations/index.html", locations = locations, title="To be visited locations")
 
 @locations_blueprint.route("/locations/add")
