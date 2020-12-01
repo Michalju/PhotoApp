@@ -10,7 +10,7 @@ ul {
     float: left;
   }
   
-  li a, .dropbtn {
+  li a, li input, .dropbtn {
     display: inline-block;
     color: #fcf0e2;
     text-align: center;
@@ -18,8 +18,8 @@ ul {
     text-decoration: none;
   }
   
-  li a:hover, .dropdown:hover .dropbtn {
-    background-color: black;
+  li a:hover,  .dropdown:hover .dropbtn {
+    background-color: #fcf0e2;
   }
   
   li.dropdown {
@@ -49,17 +49,49 @@ ul {
     display: block;
   }
   
-  .search-container {
+  /* .search-container {
     vertical-align: middle;
     padding: 14px 16px;
     text-decoration: none;
-  }  
-
-.search-container button, input {
+  }   */
+/* .search-container button, input { */
+.search-container input {
     background: #fcf0e2;
     cursor: pointer;
   }
   
-.search-container button:hover {
+/* .search-container button:hover {
     background: #ccc;
-  }
+  } */
+
+.top_bar_icon{
+  width: 25px;
+}
+.home_icon:hover{
+  content: url("../images/baseline_home_black_48dp.png");
+  width: 25px;
+}
+
+.view_icon:hover{
+  content: url("../images/baseline_view_module_black_48dp.png");
+  width: 25px;
+
+}
+
+.add_icon:hover{
+  content: url("../images/baseline_library_add_black_48dp.png");
+  width: 25px;
+
+}
+
+.edit_icon:hover{
+  content: url("../images/baseline_edit_black_48dp.png");
+  width: 25px;
+
+}
+
+#search_bar{
+  color: black;
+font-size: 20px;
+
+}
