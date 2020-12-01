@@ -5,3 +5,4 @@ class Location:
         self.visited=visited
         self.country=coutry
         self.id=id
+        self._random_photo = None

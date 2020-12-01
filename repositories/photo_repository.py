@@ -70,16 +70,18 @@ def update(photo):
     # execute sql query
     run_sql(sql, values)
 
-#get a single random photo for a given location
-
-def location_photo(location):
-    sql = "SELECT * FROM photos WHERE location_id = %s ORDER BY random() LIMIT 6"
-    values = [location.id] 
-    result = run_sql(sql, values)
-    # convert return which is a single element list of dictionaries into a continent object
-    if result :
-        result = result[0]
-        photo = Photo(result["filename"], result["mine"], location_repository.select(result['location_id']),result["id"])
-        # return the result 
-        return photo
-    return None
+# return locations with random photos
+def locations_photo(locations):
+    locations_with_photo = []
+    
+    for location in locations:
+        sql = "SELECT * FROM photos WHERE location_id = %s ORDER BY random() LIMIT 6"
+        values = [location.id] 
+        result = run_sql(sql, values)
+        # convert return which is a single element list of dictionaries into a continent object
+        if result :
+            location._random_photo= result[0]["filename"]
+            locations_with_photo.append(location)
+        else:
+            locations_with_photo.append(location)
+    return locations_with_photo

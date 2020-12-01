@@ -40,3 +40,8 @@ class TestLocation(unittest.TestCase):
         self.assertEqual(self.glencoe.id, 1)
         self.assertEqual(self.godafoss.id, 2)
         self.assertEqual(self.no_id.id, None)
+
+    # Verifies location _random_photo has been setup correctly
+    def test_location_random_photo(self):
+        self.assertEqual(self.glencoe._random_photo, None)
+        self.assertEqual(self.godafoss._random_photo, None)

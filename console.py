@@ -84,7 +84,7 @@ photo_repository.save(photo_devils_pulpit_01)
 # photo_repository.save(photo_devils_pulpit_02)
 # photo_repository.save(photo_devils_pulpit_03)
 # photo_repository.location_photo(godafoss)
-# photo_repository.location_photo(devils_pulpit)
+# aaa= photo_repository.locations_photo(location_repository.select_six_random())
 
 photo_repository.save(marina_sands_bay_01)
 
