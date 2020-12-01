@@ -13,7 +13,12 @@
     <tr>
         <td>{{location.name}}</td>
         <td>{{location.description}}</td>
-        <td>{{location.visited}}</td>
+        <td>{% if location.visited %}
+            Yes
+        {% else %}
+            No
+        {% endif %}        
+        </td>
         <td>{{location.country.name}}</td>
         <td class="td_action">
             <form action="/locations" method="POST">
