@@ -15,25 +15,15 @@ class TestPhoto(unittest.TestCase):
         self.glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, self.scotland, 1)
         self.godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, self.iceland, 2)
 
-        self.glencoe_photo = Photo("photos/devils_pulpit.jpg", True, self.glencoe, 1)
-        self.godafoss_photo_01 = Photo("photos/marina_sands01.jpg", True, self.godafoss, 2)
-        self.godafoss_photo_02 = Photo("photos/marina_sands01.jpg", True, self.godafoss)        
+        self.glencoe_photo = Photo("devils_pulpit.jpg", True, self.glencoe, 1)
+        self.godafoss_photo_01 = Photo("marina_sands01.jpg", True, self.godafoss, 2)
+        self.godafoss_photo_02 = Photo("marina_sands01.jpg", True, self.godafoss)        
 
 
     # Verifies photo filename has been setup correctly
     def test_photo_filename(self):
-        fin = None
-        fin = open("photos/devils_pulpit.jpg", "rb")
-        img1 = fin.read()
-        fin = open("photos/marina_sands01.jpg", "rb")
-        img2 = fin.read()       
-        if fin:
-            fin.close()
-
-
-        self.assertEqual(self.glencoe_photo.image,img1)
-
-        self.assertEqual(self.godafoss_photo_01.image, img2)
+        self.assertEqual(self.glencoe_photo.filename,"devils_pulpit.jpg")
+        self.assertEqual(self.godafoss_photo_01.filename, "marina_sands01.jpg")
 
 
 

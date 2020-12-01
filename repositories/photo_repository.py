@@ -8,9 +8,9 @@ import repositories.location_repository as location_repository
 # create save function   
 def save(photo):
     # create sql query without values
-    sql = "INSERT INTO photos (filename, path, mine, location_id) VALUES (%s, %s, %s, %s) RETURNING id"
+    sql = "INSERT INTO photos (filename, mine, location_id) VALUES (%s, %s, %s) RETURNING id"
      # create list with values required by sql query
-    values = [photo.filename, photo.path, photo.mine, photo.location.id ]
+    values = [photo.filename, photo.mine, photo.location.id ]
     # execute sql query
     results = run_sql(sql, values)
      # obtain id from the query result and put it into the class
@@ -27,7 +27,7 @@ def select_all():
     results = run_sql(sql)
     # convert return which is a single element list of dictionaries into list of countries objects
     for result in results:        
-        photo = Photo(result["filename"], result["path"], result["mine"], location_repository.select(result['location_id']),result["id"]) 
+        photo = Photo(result["filename"], result["mine"], location_repository.select(result['location_id']),result["id"]) 
         photos.append(photo)
     # return the result 
     return photos
@@ -41,7 +41,7 @@ def select(id):
     # execute sql query
     result = run_sql(sql, values)[0]
     # convert return which is a single element list of dictionaries into a continent object
-    photo = Photo(result["filename"], result["path"], result["mine"], location_repository.select(result['location_id']),result["id"]) 
+    photo = Photo(result["filename"], result["mine"], location_repository.select(result['location_id']),result["id"]) 
     # return the result 
     return photo
 
@@ -64,9 +64,9 @@ def delete(id):
 # create update function    
 def update(photo):
     # create sql query without values
-    sql = "UPDATE photos SET (filename, path, mine, location_id) = (%s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE photos SET (filename, mine, location_id) = (%s, %s, %s) WHERE id = %s"
     # create list with values required by sql query
-    values = [photo.filename, photo.path, photo.mine, photo.location.id, photo.id]
+    values = [photo.filename, photo.mine, photo.location.id, photo.id]
     # execute sql query
     run_sql(sql, values)
 
@@ -74,9 +74,12 @@ def update(photo):
 
 def location_photo(location):
     sql = "SELECT * FROM photos WHERE location_id = %s ORDER BY random() LIMIT 6"
-    values = [location.id]
-    result = run_sql(sql, values)[0]
+    values = [location.id] 
+    result = run_sql(sql, values)
     # convert return which is a single element list of dictionaries into a continent object
-    photo = Photo(result["filename"], result["path"], result["mine"], location_repository.select(result['location_id']),result["id"]) 
-    # return the result 
-    return photo
+    if result :
+        result = result[0]
+        photo = Photo(result["filename"], result["mine"], location_repository.select(result['location_id']),result["id"])
+        # return the result 
+        return photo
+    return None

@@ -1,7 +1,5 @@
 import pdb
-
 import sys
-
 
 from models.continent import Continent
 from models.country import Country
@@ -80,12 +78,14 @@ location_repository.save(alps)
 location_repository.save(namibia_dunes)
 location_repository.save(devils_pulpit)
 
-photo_devils_pulpit_01 = Photo("photos/devils_pulpit.jpg", True, devils_pulpit)
-marina_sands_bay_01 = Photo("photos/marina_sands01.jpg", True, marina_sands_bay)
-# photo_repository.save(photo_devils_pulpit_01)
+photo_devils_pulpit_01 = Photo("devils_pulpit.jpg", True, devils_pulpit)
+marina_sands_bay_01 = Photo("marina_sands01.jpg", True, marina_sands_bay)
+photo_repository.save(photo_devils_pulpit_01)
 # photo_repository.save(photo_devils_pulpit_02)
 # photo_repository.save(photo_devils_pulpit_03)
+# photo_repository.location_photo(godafoss)
+# photo_repository.location_photo(devils_pulpit)
 
-#photo_repository.save(marina_sands_bay_01)
+photo_repository.save(marina_sands_bay_01)
 
 pdb.set_trace()
