@@ -9,9 +9,7 @@
             <img class="card_image" src='{{url_for("static", filename="photos/"+location._random_photo)}}'>
         {% else %}
             <img class="card_image" src='{{url_for("static", filename="images/location.png")}}'>
-        {% endif %}
-        
-
+        {% endif %}       
         <div class="container">
             <h4><b>{{location.name}}</b></h4>
             <p>{{location.country.name}}</p>

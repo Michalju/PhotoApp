@@ -61,9 +61,6 @@ def delete(id):
     run_sql(sql, values)
     
 # create update function
-    
-    
-    
 def update(continent):
     # create sql query without values
     sql = "UPDATE continents SET name = %s WHERE id = %s"

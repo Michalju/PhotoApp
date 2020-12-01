@@ -49,21 +49,11 @@ ul {
     display: block;
   }
   
-  /* .search-container {
-    vertical-align: middle;
-    padding: 14px 16px;
-    text-decoration: none;
-  }   */
-/* .search-container button, input { */
 .search-container input {
     background: #fcf0e2;
     cursor: pointer;
   }
   
-/* .search-container button:hover {
-    background: #ccc;
-  } */
-
 .top_bar_icon{
   width: 25px;
 }

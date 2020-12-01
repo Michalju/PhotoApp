@@ -129,7 +129,4 @@ def search(name):
     for result in results:        
         location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
         locations.append(location)
-    # convert return which is a single element list of dictionaries into a continent object
-    #location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"])
-    # return the result 
     return locations
