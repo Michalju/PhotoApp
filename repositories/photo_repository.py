@@ -8,9 +8,10 @@ import repositories.location_repository as location_repository
 # create save function   
 def save(photo):
     # create sql query without values
-    sql = "INSERT INTO photos (filename, mine, location_id) VALUES (%s, %s, %s) RETURNING id"
+
+    sql = "INSERT INTO photos (filename, mine, location_id, camera_model, lens_model ,aperture, iso, latitude, longitude) VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s) RETURNING id"
      # create list with values required by sql query
-    values = [photo.filename, photo.mine, photo.location.id ]
+    values = [photo.filename, photo.mine, photo.location.id, photo.exif_details["camera_model"], photo.exif_details["lens_model"] ,photo.exif_details["aperture"], photo.exif_details["iso"], photo.gps_location["latitude"], photo.gps_location["longitude"]]
     # execute sql query
     results = run_sql(sql, values)
      # obtain id from the query result and put it into the class

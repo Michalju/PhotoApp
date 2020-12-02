@@ -25,5 +25,11 @@ CREATE TABLE photos(
     id SERIAL PRIMARY KEY,
     filename VARCHAR(255),
     mine BOOLEAN,
-    location_id INT REFERENCES locations(id) ON DELETE CASCADE
+    location_id INT REFERENCES locations(id) ON DELETE CASCADE,
+    camera_model VARCHAR(255),
+    lens_model VARCHAR(255),
+    aperture VARCHAR(255),
+    iso VARCHAR(255),
+    latitude VARCHAR(255),
+    longitude VARCHAR(255)
 );
