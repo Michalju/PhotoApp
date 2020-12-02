@@ -4,9 +4,37 @@
 
 <div class="grid-container-sinlge-location">
     {% for photo in photos %}
-    <a href='{{url_for("static", filename="photos/"+photo.filename)}}' target="_blank">
-        <img class="card_image-sinlge-location" src='{{url_for("static", filename="photos/"+photo.filename)}}'>
-    </a>
+    <div>
+        <a  href='{{url_for("static", filename="photos/"+photo.filename)}}' target="_blank">
+            <img class="card_image-sinlge-location" src='{{url_for("static", filename="photos/"+photo.filename)}}'>
+        </a>
+        <table class="styled-table">
+            <tr>
+                <th>Camera:</th>
+                <td>{{photo.exif_details["camera_model"]}}</td>
+            </tr>
+            <tr>
+                <th>Lens:</th>
+                <td>{{photo.exif_details["lens_model"]}}</td>
+            </tr>
+            <tr>
+                <th>Aperture:</th>
+                <td>{{photo.exif_details["aperture"]}}</td>
+            </tr>
+            <tr>
+                <th>Iso:</th>
+                <td>{{photo.exif_details["iso"]}}</td>
+            </tr>
+
+            {% if photo.gps_location["latitude"] and photo.gps_location["longitude"] %}
+                <tr>
+                    <th>Map</th>
+                    <td><a href='https://www.openstreetmap.org/export#map=18/{{photo.gps_location["latitude"]}}/{{photo.gps_location["longitude"]}}' target="_blank">Show on map</a></td>
+                </tr>          
+            {% endif %}
+
+        </table>
+    </div>
     {% endfor %}
 </div>
 
