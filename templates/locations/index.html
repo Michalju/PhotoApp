@@ -4,18 +4,22 @@
 
 <div class="grid-container">
     {% for location in locations  %}
+    
     <div class="card">
-        {% if location._random_photo %}
-            <img class="card_image" src='{{url_for("static", filename="photos/"+location._random_photo)}}'>
-        {% else %}
-            <img class="card_image" src='{{url_for("static", filename="images/location.png")}}'>
-        {% endif %}       
-        <div class="container">
-            <h4><b>{{location.name}}</b></h4>
-            <p>{{location.country.name}}</p>
-            <p>({{location.country.continent.name}})</p>
-        </div>
+        <a href="/locations/view_single/{{location.id}}">
+            {% if location._random_photo %}
+                <img class="card_image" src='{{url_for("static", filename="photos/"+location._random_photo)}}'>
+            {% else %}
+                <img class="card_image" src='{{url_for("static", filename="images/location.png")}}'>
+            {% endif %}       
+            <div class="container">
+                <h4><b>{{location.name}}</b></h4>
+                <p>{{location.country.name}}</p>
+                <p>({{location.country.continent.name}})</p>
+            </div>
+        </a>
     </div>
+    
     {% endfor %}
 </div>
 {% endblock %}

@@ -7,7 +7,7 @@
   justify-content: center;
 }
 
-.grid-container > div {
+.grid-container > div  {
   background-color: rgba(255, 255, 255, 0.8);
 
   text-align: center;
@@ -17,11 +17,16 @@
 
 /* This is card CSS */
 
-.card {
+.card{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.81);
   transition: 0.3s;
   border-radius: 40px; 
   color: white;
+}
+
+.card a{
+  color: white;
+  text-decoration: 	none white solid;
 }
 
 .card:hover {

@@ -11,7 +11,7 @@
     </tr>
     {% for location in locations %}    
     <tr>
-        <td>{{location.name}}</td>
+        <td><a href="/locations/view_single/{{location.id}}">{{location.name}}</a></td>
         <td>{{location.description}}</td>
         <td>{% if location.visited %}
             ✅
@@ -25,10 +25,7 @@
                 <input type="hidden" name="location_id" value="{{location.id}}">
                 <button type="submit" formaction="/locations/edit">Edit</button>
                 <button type="submit" formaction="/locations/delete">Delete</button>
-                <button type="submit" formaction="/locations/view_single">Details</button>
-
             </form>
-            
         </td>
     </tr> 
     {% endfor %}
