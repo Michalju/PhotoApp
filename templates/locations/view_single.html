@@ -4,7 +4,9 @@
 
 <div class="grid-container-sinlge-location">
     {% for photo in photos %}
+    <a href='{{url_for("static", filename="photos/"+photo.filename)}}' target="_blank">
         <img class="card_image-sinlge-location" src='{{url_for("static", filename="photos/"+photo.filename)}}'>
+    </a>
     {% endfor %}
 </div>
 
