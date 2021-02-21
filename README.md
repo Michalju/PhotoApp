@@ -24,6 +24,8 @@
 * PostgreSQL version 13.0
 * Flask version 1.1.2
 * psycopg2 version 2.8.6
+* pillow 8.1.0
+* requests 2.25.1
 
 ## Installation steps: ##
 * createdb photo_locations

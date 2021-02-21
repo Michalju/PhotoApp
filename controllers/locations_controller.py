@@ -4,6 +4,7 @@ from models.location import Location
 import repositories.location_repository as location_repository
 import repositories.country_repository as country_repository
 import repositories.photo_repository as photo_repository
+import requests
 
 locations_blueprint = Blueprint("locations", __name__)
 
@@ -29,6 +30,17 @@ def locations_add():
     location_repository.save(new_location)
     return redirect('/locations/view')
 
+@locations_blueprint.route("/locations/api_test")
+def api_new():
+    return render_template("locations/api_test.html", title="API test")
+
+@locations_blueprint.route("/locations/api_test", methods=['POST'])
+def locations_api_result():
+# http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=da62419a0afbc1c0263202a88657c615
+    # api_result = requests.get("http://api.open-notify.org/this-api-doesnt-exist")
+    api_result = requests.get("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=da62419a0afbc1c0263202a88657c615")
+    # request.form['api_address']
+    return render_template("/locations/api_results.html", api_result=api_result.status_code)
 
 @locations_blueprint.route("/locations/view")
 def locations_view():

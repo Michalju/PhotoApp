@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/locations/api_test" method="POST">
+    <table class="styled-table">
+        <tr>
+            <th>API Href</th>
+            <th>Action</th>
+        </tr>
+        <tr>           
+            <td>
+                <textarea rows="4" cols="50" id="api_address" name="api_address" required></textarea>
+            </td>
+            <td>
+                <button type="submit">API Test</button>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
