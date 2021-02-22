@@ -5,6 +5,7 @@ import repositories.location_repository as location_repository
 import repositories.country_repository as country_repository
 import repositories.photo_repository as photo_repository
 import requests
+import json
 
 locations_blueprint = Blueprint("locations", __name__)
 
@@ -38,9 +39,11 @@ def api_new():
 def locations_api_result():
 # http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=da62419a0afbc1c0263202a88657c615
     # api_result = requests.get("http://api.open-notify.org/this-api-doesnt-exist")
-    api_result = requests.get("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=da62419a0afbc1c0263202a88657c615")
+    # api_result = requests.get("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=da62419a0afbc1c0263202a88657c615")
+    api_result = requests.get("http://api.openweathermap.org/data/2.5/onecall/timemachine?lat=57.149651&lon=-2.099075&dt=1614034829&appid=da62419a0afbc1c0263202a88657c615")
     # request.form['api_address']
-    return render_template("/locations/api_results.html", api_result=api_result.status_code)
+    api_result_json = json.dumps(api_result.json() , sort_keys=True, indent=4)
+    return render_template("/locations/api_results.html", api_result=api_result_json)
 
 @locations_blueprint.route("/locations/view")
 def locations_view():
