@@ -4,7 +4,7 @@
 
 
 ## The app fatures are as follows: ##              
-### MVP ###               
+### MVP 1 ###               
 * The app allows the user to track countries and locaitons they want to visit and those they have visited.  The user is able to create and edit countries
 * Each country can have one or more locaitons to visit 
 * The user is able to create and delete entries for locations 
