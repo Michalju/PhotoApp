@@ -18,12 +18,12 @@
 
 ## Required packages: ## 
 * PostgreSQL version 13.0
-* Flask version 1.1.2
-* psycopg2 version 2.8.6
-* pillow 8.1.0
-* requests 2.25.1
+* Flask version 2.9.1 (pip install Flask)
+* psycopg2 version 2.8.6 (pip install psycopg2)
+* pillow 8.3.1 (pip install Pillow)
+* requests 2.25.1 (pip install requests)
 
-## Installation steps: ##
+## Installation steps: ## Ensure user can login to DB
 * createdb photo_locations
 * psql -d photo_locations -f db/photo_locations.sql
-* python3 console.py
+* python console.py
