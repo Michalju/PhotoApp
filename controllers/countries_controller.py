@@ -6,7 +6,7 @@ import repositories.continent_repository as continent_repository
 
 countries_blueprint = Blueprint("countries", __name__)
 
-@countries_blueprint.route("/countries/add")
+@countries_blueprint.route("/countries/new")
 def countries_new():
     continents = continent_repository.select_all()
     return render_template("countries/add.html", continents=continents, title="Add a country")

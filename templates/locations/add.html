@@ -8,6 +8,7 @@
             <th>Name</th>
             <th>Visited</th>
             <th>Description</th>
+            <th>Photo</th>
             <th>Action</th>
         </tr>
         <tr>
@@ -29,6 +30,13 @@
             </td>
             <td>
                 <textarea rows="4" cols="50" id="description" name="description" required></textarea>
+            </td>
+            <td>
+                <form action = "http://localhost:5000/uploader" method = "POST" 
+                enctype = "multipart/form-data">
+                <input type = "file" name = "file" multiple/>
+                <input type = "submit" value = "Update list"/>
+             </form>
             </td>
             <td>
                 <button type="submit">Add Location</button>

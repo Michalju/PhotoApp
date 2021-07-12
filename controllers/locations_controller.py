@@ -20,7 +20,7 @@ def locations_to_be_visited():
     locations = photo_repository.locations_photo(location_repository.to_be_visited())
     return render_template("locations/index.html", locations = locations, title="To be visited locations")
 
-@locations_blueprint.route("/locations/add")
+@locations_blueprint.route("/locations/new")
 def locations_new():
     countries = country_repository.select_all()
     return render_template("locations/add.html", countries=countries, title="Add a location")

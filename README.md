@@ -22,6 +22,7 @@
 * psycopg2 version 2.8.6 (pip install psycopg2)
 * pillow 8.3.1 (pip install Pillow)
 * requests 2.25.1 (pip install requests)
+* python dotenv 0.18.0 (pip install python-dotenv)
 
 ## Installation steps: ## Ensure user can login to DB
 * createdb photo_locations
