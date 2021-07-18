@@ -47,15 +47,18 @@ def locations_new():
 def locations_add():
     new_location = Location(request.form['name'], request.form['description'], request.form['visited'], country_repository.select(request.form['country_id']))
     location_repository.save(new_location)
-    uploaded_file = request.files['file']
-    print ("var type = ", type(uploaded_file))
-    filename = secure_filename(uploaded_file.filename)
-    if filename != '':
-        file_ext = os.path.splitext(filename)[1]
-        if file_ext not in current_app.config['UPLOAD_EXTENSIONS'] or \
-                file_ext != validate_image(uploaded_file.stream):
-            return "Invalid image", 400
-        uploaded_file.save(os.path.join(current_app.config['UPLOAD_PATH'], filename))
+    location_name = request.form['name']
+    identifier = 1
+    uploaded_files = request.files.getlist('files')
+    for uploaded_file in uploaded_files:
+        filename = secure_filename(uploaded_file.filename)
+        if filename != '':
+            file_ext = os.path.splitext(filename)[1]
+            if file_ext not in current_app.config['UPLOAD_EXTENSIONS'] or \
+                    file_ext != validate_image(uploaded_file.stream):
+                return "Invalid image", 400
+            uploaded_file.save(os.path.join(current_app.config['UPLOAD_PATH'], location_name+"_"+str(identifier).zfill(3)+"."+file_ext))
+        identifier+=1
     return redirect('/locations/view')
 
 @locations_blueprint.route("/locations/api_test")
