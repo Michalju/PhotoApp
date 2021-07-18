@@ -1,47 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/locations/add" method="POST">
-    <table class="styled-table">
-        <tr>
-            <th>Country</th>
-            <th>Name</th>
-            <th>Visited</th>
-            <th>Description</th>
-            <th>Photo</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>
-                <select id="country" name="country_id">
-                    {% for country in countries %}
-                        <option value="{{ country.id }}">{{ country.name }}</option>
-                    {% endfor %}
-                </select>
-            </td>
-            <td>
-                <input type="text" id="name" name="name" placeholder="Name" required autofocus>
-            </td>
-            <td>
-                <select id="visited" name="visited">
-                    <option value="False">No</option>
-                    <option value="True">Yes</option>
-                </select>
-            </td>
-            <td>
-                <textarea rows="4" cols="50" id="description" name="description" required></textarea>
-            </td>
-            <td>
-                <form action = "http://localhost:5000/uploader" method = "POST" 
-                enctype = "multipart/form-data">
+    <form action="/locations/add" method="POST" enctype="multipart/form-data">
+        <table class="styled-table">
+            <tr>
+                <th>Country</th>
+                <th>Name</th>
+                <th>Visited</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>
+                    <select id="country" name="country_id">
+                        {% for country in countries %}
+                            <option value="{{ country.id }}" {% if country_id_default==country.id %} selected="selected"{% endif %}>{{ country.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <input type="text" id="name" name="name" placeholder="Name" required autofocus>
+                </td>
+                <td>
+                    <select id="visited" name="visited">
+                        <option value="False">No</option>
+                        <option value="True">Yes</option>
+                    </select>
+                </td>
+                <td>
+                    <textarea rows="4" cols="50" id="description" name="description" required></textarea>
+                </td>
+                <td>
+                    <!-- can't have form within the form ... need to keep this as upload photos whereas adding more and changing meta file shall be in edit window. -->
+                    <!-- <form action = "/locations/new" method = "POST" enctype = "multipart/form-data">
+                    <input type = "file" name = "file" multiple/>
+                    <input type = "submit" value = "Update list"/>
+                </form> -->
                 <input type = "file" name = "file" multiple/>
-                <input type = "submit" value = "Update list"/>
-             </form>
-            </td>
-            <td>
-                <button type="submit">Add Location</button>
-            </td>
-        </tr>
-    </table>
-</form>
+                </td>
+                <td>
+                    <button type="submit">Add Location</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <hr>
+    {% for file in files %}
+    <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+    {% endfor %}
 {% endblock %}
