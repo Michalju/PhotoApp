@@ -44,8 +44,6 @@ class Photo:
                 "latitude":Latitude, "longitude":Longitude}
 
     def get_photo_info(self):
-
-
         image = Image.open(self._file_location)
         exif_data_PIL = image._getexif()
         image.close()

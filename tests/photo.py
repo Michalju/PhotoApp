@@ -1,4 +1,5 @@
 import unittest
+
 from models.continent import Continent
 from models.country import Country
 from models.location import Location
@@ -17,7 +18,7 @@ class TestPhoto(unittest.TestCase):
 
         self.glencoe_photo = Photo("devils_pulpit.jpg", True, self.glencoe, 1)
         self.godafoss_photo_01 = Photo("marina_sands01.jpg", True, self.godafoss, 2)
-        self.godafoss_photo_02 = Photo("marina_sands01.jpg", True, self.godafoss)        
+        self.godafoss_photo_02 = Photo("marina_sands01.jpg", True, self.godafoss)
 
 
     # Verifies photo filename has been setup correctly
@@ -25,15 +26,13 @@ class TestPhoto(unittest.TestCase):
         self.assertEqual(self.glencoe_photo.filename,"devils_pulpit.jpg")
         self.assertEqual(self.godafoss_photo_01.filename, "marina_sands01.jpg")
 
-
-
     # Verifies photo mine has been setup correctly
     def test_photo_mine(self):
         self.assertEqual(self.glencoe_photo.mine, True)
-        self.assertEqual(self.godafoss_photo_01.mine, False)
+        self.assertEqual(self.godafoss_photo_01.mine, True)
         
     # Verifies photo location has been setup correctly
-    def test_photo_mine(self):
+    def test_photo_location(self):
         self.assertEqual(self.glencoe_photo.location.id, 1)
         self.assertEqual(self.godafoss_photo_01.location.id, 2)
 

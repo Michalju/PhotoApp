@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 import repositories.location_repository as location_repository
 import repositories.country_repository as country_repository
 import repositories.photo_repository as photo_repository
+from models.photo import Photo
 import requests
 import json
 import imghdr
@@ -57,7 +58,10 @@ def locations_add():
             if file_ext not in current_app.config['UPLOAD_EXTENSIONS'] or \
                     file_ext != validate_image(uploaded_file.stream):
                 return "Invalid image", 400
-            uploaded_file.save(os.path.join(current_app.config['UPLOAD_PATH'], location_name+"_"+str(identifier).zfill(3)+"."+file_ext))
+            file_name = location_name+"_"+str(identifier).zfill(3)+"."+file_ext
+            # add entry into a database with file location
+            uploaded_file.save(os.path.join(current_app.config['UPLOAD_PATH'], file_name))
+            photo_repository.save(Photo(file_name, True, new_location))
         identifier+=1
     return redirect('/locations/view')
 
