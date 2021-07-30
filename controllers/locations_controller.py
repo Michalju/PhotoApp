@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 import repositories.location_repository as location_repository
 import repositories.country_repository as country_repository
 import repositories.photo_repository as photo_repository
+from models.file import File
 from models.photo import Photo
 import requests
 import json
@@ -48,21 +49,11 @@ def locations_new():
 def locations_add():
     new_location = Location(request.form['name'], request.form['description'], request.form['visited'], country_repository.select(request.form['country_id']))
     location_repository.save(new_location)
-    location_name = request.form['name']
-    identifier = 1
     uploaded_files = request.files.getlist('files')
     for uploaded_file in uploaded_files:
-        filename = secure_filename(uploaded_file.filename)
-        if filename != '':
-            file_ext = os.path.splitext(filename)[1]
-            if file_ext not in current_app.config['UPLOAD_EXTENSIONS'] or \
-                    file_ext != validate_image(uploaded_file.stream):
-                return "Invalid image", 400
-            file_name = location_name+"_"+str(identifier).zfill(3)+"."+file_ext
-            # add entry into a database with file location
-            uploaded_file.save(os.path.join(current_app.config['UPLOAD_PATH'], file_name))
-            photo_repository.save(Photo(file_name, True, new_location))
-        identifier+=1
+        Added_photo = File(new_location ,uploaded_file,current_app.config['UPLOAD_PATH'])
+        photo_repository.save(Photo(Added_photo._file_name_with_extension, True, new_location))
+
     return redirect('/locations/view')
 
 @locations_blueprint.route("/locations/api_test")

@@ -6,6 +6,7 @@ class File:
         self.file = file
         self.storage_path = storage_path
         self._file_name = ""
+        self._file_name_with_extension = ""
         self._file_extension = os.path.splitext(secure_filename((self.file.filename)))[1]
         self.get_filename()
         self.save()
@@ -26,4 +27,5 @@ class File:
             self._file_name =self._location_name + "_001"
 
     def save(self):
-        self.file.save(os.path.join(self.storage_path, self._file_name + self._file_extension))        
+        self._file_name_with_extension = self._file_name + self._file_extension
+        self.file.save(os.path.join(self.storage_path, self._file_name_with_extension))        

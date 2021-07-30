@@ -39,16 +39,6 @@ class TestFile(unittest.TestCase):
     # Verifies file name was set and saved correctly
     def test_save(self):   
         # with open("tests/Glencoe_001.jpg", 'rb') as fp:
-        #     self.test_file = FileStorage(fp)
-        #     self.photo_01 = File(self.glencoe,self.test_file,"tests")
-        #     self.photo_02 = File(self.godafoss,self.test_file,"tests")
-            
-
-        #     #self.photo_01.get_filename()
-        #     self.photo_01.save()
-
-        #     #self.photo_02.get_filename()
-        #     self.photo_02.save()
         with open("tests/Glencoe_001.jpg", 'rb') as fp:
             self.test_file = FileStorage(fp)
             self.photo_01 = File(self.glencoe,self.test_file,"tests")
