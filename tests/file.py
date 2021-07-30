@@ -5,9 +5,7 @@ from models.location import Location
 from models.file import File
 from werkzeug.datastructures import FileStorage
 import os
-#os.path.isfile('./final_data.csv')
-class TestFile(unittest.TestCase):
-    
+class TestFile(unittest.TestCase):    
     # This is to setup countries for test
     def setUp(self):
         self.europe = Continent("Europe", 2)
@@ -18,36 +16,49 @@ class TestFile(unittest.TestCase):
         self.godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, self.iceland, 2)
         self.no_id = Location("No id", "locaiton without id", True,self.scotland)
         self.test_file = None
-        with open("tests/Glencoe_001.jpg") as fp:
-             self.test_file = FileStorage(fp)
-        self.photo_01 = File(self.glencoe,self.test_file)
-        self.photo_02 = File(self.godafoss,self.test_file)
 
     # Verifies location name has been setup correctly
     def test_file_location_name(self):
-         self.assertEqual(self.photo_01._location_name, "Glencoe")
+        with open("tests/Glencoe_001.jpg", 'rb') as fp:
+            self.test_file = FileStorage(fp)
+            self.photo_01 = File(self.glencoe,self.test_file,"tests")
+
+        self.assertEqual(self.photo_01._location_name, "Glencoe")
+        os.remove('tests/Glencoe_004.jpg')
 
     # Verifies storage path is correct
     def test_storage_path(self):
-        self.assertEqual(self.photo_01._storage_path ,"static/photos")
+        with open("tests/Glencoe_001.jpg", 'rb') as fp:
+            self.test_file = FileStorage(fp)
+            self.photo_01 = File(self.glencoe,self.test_file,"tests")
+
+        self.assertEqual(self.photo_01.storage_path ,"tests")
+        os.remove('tests/Glencoe_004.jpg')
 
 
     # Verifies file name was set and saved correctly
     def test_save(self):   
-        self.photo_01._storage_path = "tests"
-        self.photo_01.get_filename()
-        self.photo_02._storage_path = "tests"
-        self.photo_02.get_filename()
+        # with open("tests/Glencoe_001.jpg", 'rb') as fp:
+        #     self.test_file = FileStorage(fp)
+        #     self.photo_01 = File(self.glencoe,self.test_file,"tests")
+        #     self.photo_02 = File(self.godafoss,self.test_file,"tests")
+            
+
+        #     #self.photo_01.get_filename()
+        #     self.photo_01.save()
+
+        #     #self.photo_02.get_filename()
+        #     self.photo_02.save()
+        with open("tests/Glencoe_001.jpg", 'rb') as fp:
+            self.test_file = FileStorage(fp)
+            self.photo_01 = File(self.glencoe,self.test_file,"tests")
+            self.test_file = FileStorage(fp)
+            self.photo_02 = File(self.godafoss,self.test_file,"tests")
 
         self.assertEqual(self.photo_01._file_name ,"Glencoe_004")
         self.assertEqual(self.photo_02._file_name ,"Godafoss_001")
-
-    # Verifies allwoed extension are configured correctly
-    #def test_allowed_extension(self): 
-        # self._allowed_extensions = ['.jpg', '.png', '.gif']
    
-        
-        # file = None
-        # with open('tests/test.jpg', 'rb') as fp:
-        #     file = FileStorage(fp)
-        # self.godafoss_photo_03.file_storage=file
+        self.assertTrue(os.path.isfile('tests/Godafoss_001.jpg'))   
+        self.assertTrue(os.path.isfile('tests/Glencoe_004.jpg'))
+        os.remove('tests/Godafoss_001.jpg')
+        os.remove('tests/Glencoe_004.jpg')
