@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 app.register_blueprint(locations_blueprint)
 app.register_blueprint(countries_blueprint)
-app.config['MAX_CONTENT_LENGTH'] = 100*1024 * 1024
-app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
-app.config['UPLOAD_PATH'] = 'static/photos'
+
+app.config.from_pyfile('config.py')
+
 
 @app.route("/")
 def main():
