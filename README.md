@@ -14,7 +14,10 @@
 * Search for destination by continent, locaiton or country
 * Home page displays 6 random locaitons
 * Locations tiles shows random photo associated with the locaiton
-* Sinlge location detailed page accessible from locaitons list
+* Single location detailed page accessible from locaitons list
+
+### MVP 2 ###  
+* Possible to upload photos to a location
 
 ## Required packages: ## 
 * PostgreSQL version 13.0
