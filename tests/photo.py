@@ -13,8 +13,8 @@ class TestPhoto(unittest.TestCase):
         self.scotland = Country("Scotland", self.europe, 1)
         self.iceland = Country("Iceland", self.europe, 3)
 
-        self.glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, self.scotland, 1)
-        self.godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, self.iceland, 2)
+        self.glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, "56.6825599", "-5.1022713", self.scotland, 1)
+        self.godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, "", "", self.iceland, 2)
 
         self.glencoe_photo = Photo("devils_pulpit.jpg", True, self.glencoe, 1)
         self.godafoss_photo_01 = Photo("marina_sands01.jpg", True, self.godafoss, 2)

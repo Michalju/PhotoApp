@@ -12,9 +12,9 @@ class TestFile(unittest.TestCase):
         self.scotland = Country("Scotland", self.europe, 1)
         self.iceland = Country("Iceland", self.europe, 3)
 
-        self.glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, self.scotland, 1)
-        self.godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, self.iceland, 2)
-        self.no_id = Location("No id", "locaiton without id", True,self.scotland)
+        self.glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, "56.6825599", "-5.1022713", self.scotland, 1)
+        self.godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, "", "", self.iceland, 2)
+        self.no_id = Location("No id", "locaiton without id", True, "", "",self.scotland)
         self.test_file = None
 
     # Verifies location name has been setup correctly

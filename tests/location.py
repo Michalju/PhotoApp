@@ -11,9 +11,9 @@ class TestLocation(unittest.TestCase):
         self.scotland = Country("Scotland", self.europe, 1)
         self.iceland = Country("Iceland", self.europe, 3)
 
-        self.glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, self.scotland, 1)
-        self.godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, self.iceland, 2)
-        self.no_id = Location("No id", "locaiton without id", True,self.scotland)
+        self.glencoe = Location("Glencoe", "This is stunning location, i need to see it", False, "56.6825599", "-5.1022713", self.scotland, 1)
+        self.godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, "", "", self.iceland, 2)
+        self.no_id = Location("No id", "locaiton without id", True, "", "", self.scotland)
 
     # Verifies location name has been setup correctly
     def test_location_name(self):
@@ -45,3 +45,10 @@ class TestLocation(unittest.TestCase):
     def test_location_random_photo(self):
         self.assertEqual(self.glencoe._random_photo, None)
         self.assertEqual(self.godafoss._random_photo, None)
+
+    # Verifies location _random_photo has been setup correctly
+    def test_location_GPS(self):
+        self.assertEqual(self.glencoe.latitude, "56.6825599")
+        self.assertEqual(self.glencoe.longitude, "-5.1022713")
+        self.assertEqual(self.godafoss.latitude, "")
+        self.assertEqual(self.godafoss.longitude, "")
