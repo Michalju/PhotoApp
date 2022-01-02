@@ -62,11 +62,9 @@ def api_new():
 
 @locations_blueprint.route("/locations/api_test", methods=['POST'])
 def locations_api_result():
-# http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=da62419a0afbc1c0263202a88657c615
-    # api_result = requests.get("http://api.open-notify.org/this-api-doesnt-exist")
-    # api_result = requests.get("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=da62419a0afbc1c0263202a88657c615")
-    api_result = requests.get("http://api.openweathermap.org/data/2.5/onecall/timemachine?lat=57.149651&lon=-2.099075&dt=1614034829&appid=da62419a0afbc1c0263202a88657c615")
-    # request.form['api_address']
+
+    api_result = requests.get("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=" + current_app.config['WEATHER_API'])
+  
     api_result_json = json.dumps(api_result.json() , sort_keys=True, indent=4)
     return render_template("/locations/api_results.html", api_result=api_result_json)
 
