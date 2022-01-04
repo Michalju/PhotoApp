@@ -8,6 +8,8 @@
                 <th>Name</th>
                 <th>Visited</th>
                 <th>Description</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
                 <th>Photo</th>
                 <th>Action</th>
             </tr>
@@ -30,6 +32,12 @@
                 </td>
                 <td>
                     <textarea rows="4" cols="50" id="description" name="description" required></textarea>
+                </td>
+                <td>
+                    <input type="text" id="latitude" name="latitude" placeholder="Latitude" required autofocus>
+                </td>
+                <td>
+                    <input type="text" id="longitude" name="longitude" placeholder="Longitude" required autofocus>
                 </td>
                 <td>
                     <!-- can't have form within the form ... need to keep this as upload photos whereas adding more and changing meta file shall be in edit window. -->

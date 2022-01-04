@@ -55,14 +55,15 @@ namibia = Country("Namibia", africa)
 country_repository.save(namibia)
 
 # populates locations table with visited places
-glencoe = Location("Glencoe", "This is stunning location...", True, scotland)
-glenfinnan = Location("Glenfinnan", "Awsome Harry Potter bridge", True, scotland)
-godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, iceland)
-lava_field = Location("Lava field", "Size fo this fields shows an impact of a vulcanic erruption.", True, iceland)
-clark_quay = Location("Clark Quay", "Good to stay", True, singapore)
-marina_sands_bay = Location("Marina Sands Bay", "Nice night photography", True, singapore)
-marina_bay_gardens = Location("Marina Bay Gardens", "Incredible garens with stunning artificial trees", True, singapore)
-devils_pulpit = Location("Devils Pulpit", "Awesome colours", True, scotland)
+# GPS coordinates app can be found here https://www.gps-latitude-longitude.com/gps-coordinates-of-glencoe
+glencoe = Location("Glencoe", "This is stunning location...", True, "56.6825599","-5.1022713" , scotland)
+glenfinnan = Location("Glenfinnan", "Awsome Harry Potter bridge",True, "56.871432","-5.438309" , scotland)
+godafoss = Location("Godafoss", "The most amazing waterfall i have ever seen", True, "65.682778", "-17.550192", iceland)
+lava_field = Location("Lava field", "Size fo this fields shows an impact of a vulcanic erruption.", True,"","", iceland)
+clark_quay = Location("Clark Quay", "Good to stay", True,"1.290602","103.846474", singapore)
+marina_sands_bay = Location("Marina Sands Bay", "Nice night photography", True,"1.284655","103.860994", singapore)
+marina_bay_gardens = Location("Marina Bay Gardens", "Incredible garens with stunning artificial trees", True,"1.281568","103.863613", singapore)
+devils_pulpit = Location("Devils Pulpit", "Awesome colours", True,"43.840461","-79.967982", scotland)
 
 location_repository.save(glencoe)
 location_repository.save(glenfinnan)
@@ -74,10 +75,10 @@ location_repository.save(marina_bay_gardens)
 location_repository.save(devils_pulpit)
 
 # populates locations table with to be visited places
-bluelagoon = Location("Blue Lagoon", "Amazing thermal pools", False, iceland)
-sentosa = Location("Sentosa", "Some entertainment there", False, singapore)
-alps = Location("Alps", "Excellent glacier photo oportunity", False, austria) 
-namibia_dunes = Location("Namibia Dunes", "Excellent dunes photo oportunity", False, namibia) 
+bluelagoon = Location("Blue Lagoon", "Amazing thermal pools", False,"","", iceland)
+sentosa = Location("Sentosa", "Some entertainment there", False,"","", singapore)
+alps = Location("Alps", "Excellent glacier photo oportunity", False,"","", austria) 
+namibia_dunes = Location("Namibia Dunes", "Excellent dunes photo oportunity", False,"","", namibia) 
 
 location_repository.save(bluelagoon)
 location_repository.save(sentosa)

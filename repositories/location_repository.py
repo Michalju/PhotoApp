@@ -8,9 +8,9 @@ import repositories.country_repository as country_repository
 # create save function   
 def save(location):
     # create sql query without values
-    sql = "INSERT INTO locations (name, description, visited, country_id) VALUES (%s, %s, %s, %s) RETURNING id"
+    sql = "INSERT INTO locations (name, description, visited, latitude, longitude, country_id) VALUES (%s, %s, %s, %s ,%s, %s) RETURNING id"
     # create list with values required by sql query
-    values = [location.name, location.description, location.visited, location.country.id]
+    values = [location.name, location.description, location.visited, location.latitude, location.longitude, location.country.id]
     # execute sql query
     results = run_sql(sql, values)
     # obtain id from the query result and put it into the class
@@ -27,7 +27,7 @@ def select_all():
     results = run_sql(sql)
     # convert return which is a single element list of dictionaries into list of locations objects
     for result in results:        
-        location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
+        location = Location(result["name"], result["description"], result["visited"], result["latitude"], result["longitude"], country_repository.select(result['country_id']),result["id"]) 
         locations.append(location)
     # return the result 
     return locations
@@ -42,7 +42,7 @@ def select_six_random():
     results = run_sql(sql)
     # convert return which is a single element list of dictionaries into list of locations objects
     for result in results:        
-        location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
+        location = Location(result["name"], result["description"], result["visited"], result["latitude"], result["longitude"], country_repository.select(result['country_id']),result["id"]) 
         locations.append(location)
     # return the result 
     return locations   
@@ -56,7 +56,7 @@ def select(id):
     # execute sql query
     result = run_sql(sql, values)[0]
     # convert return which is a single element list of dictionaries into a continent object
-    location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"])
+    location = Location(result["name"], result["description"], result["visited"], result["latitude"], result["longitude"], country_repository.select(result['country_id']),result["id"])
     # return the result 
     return location
 
@@ -79,9 +79,9 @@ def delete(id):
 # create update function    
 def update(location):
     # create sql query without values
-    sql = "UPDATE locations SET (name, description, visited, country_id) = (%s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE locations SET (name, description, visited, latitude, longitude, country_id) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
     # create list with values required by sql query
-    values = [location.name, location.description, location.visited, location.country.id, location.id]
+    values = [location.name, location.description, location.visited, location.latitude, location.longitude, location.country.id, location.id]
     # execute sql query
     run_sql(sql, values)
 
@@ -95,7 +95,7 @@ def visited():
     results = run_sql(sql)
     # convert return which is a single element list of dictionaries into list of locations objects
     for result in results:        
-        location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
+        location = Location(result["name"], result["description"], result["visited"], result["latitude"], result["longitude"], country_repository.select(result['country_id']),result["id"]) 
         locations.append(location)
     # return the result 
     return locations
@@ -110,7 +110,7 @@ def to_be_visited():
     results = run_sql(sql)
     # convert return which is a single element list of dictionaries into list of locations objects
     for result in results:        
-        location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
+        location = Location(result["name"], result["description"], result["visited"], result["latitude"], result["longitude"], country_repository.select(result['country_id']),result["id"]) 
         locations.append(location)
     # return the result 
     return locations
@@ -127,6 +127,6 @@ def search(name):
     # execute sql query
     results = run_sql(sql, values)
     for result in results:        
-        location = Location(result["name"], result["description"], result["visited"], country_repository.select(result['country_id']),result["id"]) 
+        location = Location(result["name"], result["description"], result["visited"], result["latitude"], result["longitude"], country_repository.select(result['country_id']),result["id"]) 
         locations.append(location)
     return locations

@@ -18,6 +18,8 @@ CREATE TABLE locations (
     name VARCHAR(255),
     description TEXT,
     visited BOOLEAN,
+    latitude VARCHAR(255),
+    longitude VARCHAR(255),
     country_id INT REFERENCES countries(id) ON DELETE CASCADE
 );
 

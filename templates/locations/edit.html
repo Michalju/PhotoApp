@@ -6,7 +6,9 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Visited</th>      
+            <th>Visited</th>
+            <th>Latitude</th>
+            <th>Longitude</th>      
             <th>Country</th>  
             <th>Action</th>
         </tr>
@@ -26,6 +28,12 @@
                         Yes
                     </option>
                 </select>
+            </td>
+            <td>
+                <input type="text" name="latitude" value="{{location.latitude}}" " required>
+            </td>
+            <td>
+                <input type="text" name="longitude" value="{{location.longitude}}" " required>
             </td>
             <td>
                 <select id="country" name="country_id">

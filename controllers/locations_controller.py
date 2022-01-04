@@ -47,12 +47,14 @@ def locations_new():
 
 @locations_blueprint.route("/locations/add", methods=['POST'])
 def locations_add():
-    new_location = Location(request.form['name'], request.form['description'], request.form['visited'], country_repository.select(request.form['country_id']))
+    new_location = Location(request.form['name'], request.form['description'], request.form['visited'], request.form['latitude'], request.form['longitude'], country_repository.select(request.form['country_id']))
     location_repository.save(new_location)
-    uploaded_files = request.files.getlist('files')
-    for uploaded_file in uploaded_files:
-        Added_photo = File(new_location ,uploaded_file,current_app.config['UPLOAD_PATH'])
-        photo_repository.save(Photo(Added_photo._file_name_with_extension, True, new_location))
+    file = request.files['files']
+    if file.filename != '': 
+        uploaded_files = request.files.getlist('files')
+        for uploaded_file in uploaded_files:
+            Added_photo = File(new_location ,uploaded_file,current_app.config['UPLOAD_PATH'])
+            photo_repository.save(Photo(Added_photo._file_name_with_extension, True, new_location))
 
     return redirect('/locations/view')
 
@@ -87,7 +89,7 @@ def locations_edit():
 @locations_blueprint.route("/locations/update", methods=['POST'])
 def locations_update():
     country = country_repository.select(request.form['country_id'])
-    updated_location = Location(request.form['location_name'], request.form['location_description'], request.form['location_visited'], country ,request.form['location_id'])
+    updated_location = Location(request.form['location_name'], request.form['location_description'], request.form['location_visited'], request.form['latitude'], request.form['longitude'], country ,request.form['location_id'])
     location_repository.update(updated_location)
     return redirect('/locations/view')
 

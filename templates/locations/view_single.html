@@ -2,6 +2,45 @@
 
 {% block content %}
 
+<table class="styled-table">
+    <tr>
+        <th>Location name</th>
+        <td>{{location.name}}</td>
+    </tr>
+    <tr>
+        <th>Country<br>(Continent)</th>
+        <td>{{location.country.name}} <br>({{location.country.continent.name}})</td>
+    </tr>
+    <tr>
+        <th>Brief</th>
+        <td>{{location.description}}</td>
+    </tr>
+    <tr>
+        <th>GPS Latitude</th>
+        <td>{{location.latitude}}</td>
+    </tr>
+    <tr>
+        <th>GPS Longitude</th>
+        <td>{{location.longitude}}</td>
+    </tr>   
+    <tr>
+        <th>Visited</th>
+        <td>{% if location.visited %}
+            ✅
+        {% else %}
+            ❌
+        {% endif %}        
+        </td>
+    </tr>
+    {% if location.latitude and location.longitude %}
+        <tr>
+            <th>Map</th>
+            <td><a href='https://www.openstreetmap.org/export#map=18/{{location.latitude}}/{{location.longitude}}' target="_blank">Show on map</a></td>
+        </tr>          
+    {% endif %}
+
+</table>
+
 <div class="grid-container-sinlge-location">
     {% for photo in photos %}
     <div>
@@ -38,29 +77,7 @@
     {% endfor %}
 </div>
 
-<table class="styled-table">
-    <tr>
-        <th>Location name</th>
-        <td>{{location.name}}</td>
-    </tr>
-    <tr>
-        <th>Country<br>(Continent)</th>
-        <td>{{location.country.name}} <br>({{location.country.continent.name}})</td>
-    </tr>
-    <tr>
-        <th>Brief</th>
-        <td>{{location.description}}</td>
-    </tr>
-    <tr>
-        <th>Visited</th>
-        <td>{% if location.visited %}
-            ✅
-        {% else %}
-            ❌
-        {% endif %}        
-        </td>
-    </tr>
-</table>
+
 
 
 {% endblock %}
