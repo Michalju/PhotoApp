@@ -68,10 +68,10 @@ def locations_api_result():
 
     #api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
     #api_result = requests.get("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=" + current_app.config['WEATHER_API'])
-    api_result = requests.get("http://api.openweathermap.org/data/2.5/weather?lat=57.316747&lon=-2.482072&units=metric&APPID=" + current_app.config['WEATHER_API'])
+    api_result = requests.get("http://api.openweathermap.org/data/2.5/onecall?lat=57.316747&lon=-2.482072&units=metric&APPID=" + current_app.config['WEATHER_API'])
     api_result_json = json.dumps(api_result.json() , sort_keys=True, indent=4)
     #pdb.set_trace()
-    return render_template("/locations/api_results.html", api_result=api_result_json)
+    return render_template("/locations/api_results.html", api_result=api_result.json())
 
 @locations_blueprint.route("/locations/view")
 def locations_view():
