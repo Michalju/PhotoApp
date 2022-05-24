@@ -1,5 +1,5 @@
 
-# Welcome to the Photo Locations App (tailored Travel Bucket List) #
+# Welcome to the Photo Locations App  #
 
 
 
@@ -18,6 +18,17 @@
 
 ### MVP 2 ###  
 * Possible to upload photos to a location
+* In progress: Get a weather forecast via API for a location based on GPS coordinates
+* In progress: Ability to upload photos and to update GPS coordinates
+
+### Future MVP 3 ###  
+* Create React front-end interacting with Flask
+
+
+### Future MVP 4 ###  
+* Deploy the app to AWS or other cloud service.
+* Add login for user/admin access.
+* Make web accessible from external world.
 
 ## Required packages: ## 
 * PostgreSQL version 13.0
